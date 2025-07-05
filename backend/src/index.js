@@ -12,11 +12,34 @@ import { connectDb } from './config/dbConfig.js';
 
 const app = express();
 
+// app.use(cors({
+    // origin: ['http://localhost:5173','https://2626-internal-dashboard.vercel.app'],
+    // credentials: true,
+    // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+// }));
+
+
+
 app.use(cors({
-    origin: ['http://localhost:5173','https://2626-internal-dashboard.vercel.app'],
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            'http://localhost:5173',
+            'https://2626-internal-dashboard.vercel.app'
+        ];
+        if (
+            allowedOrigins.includes(origin) ||
+            /^https:\/\/2626-internal-dashboard.*\.vercel\.app$/.test(origin)
+        ) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 }));
+
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.text());
