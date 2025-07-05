@@ -18,14 +18,17 @@ const app = express();
     // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 // }));
 
-
-
 app.use(cors({
     origin: function (origin, callback) {
+        if (!origin) return callback(null, true); // Allow server-to-server, health checks, or tools with no origin
+
         const allowedOrigins = [
             'http://localhost:5173',
-            'https://2626-internal-dashboard.vercel.app'
+            'https://2626-internal-dashboard.vercel.app',
+            'https://2626-internal-dashboard-git-main-rahuljangid441s-projects.vercel.app',
+            'https://2626-internal-dashboard-j5k799rdx-rahuljangid441s-projects.vercel.app'
         ];
+        // Allow all Vercel preview/branch deployments for your project
         if (
             allowedOrigins.includes(origin) ||
             /^https:\/\/2626-internal-dashboard.*\.vercel\.app$/.test(origin)
