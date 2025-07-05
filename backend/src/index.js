@@ -13,7 +13,7 @@ import { connectDb } from './config/dbConfig.js';
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173','https://2626-internal-dashboard.vercel.app'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 }));
