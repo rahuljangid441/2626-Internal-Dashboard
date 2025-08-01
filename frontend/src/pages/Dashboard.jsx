@@ -61,6 +61,20 @@ function Dashboard({ setIsAuthenticated }) {
               </button>
               
               <button
+                onClick={() => handleTabClick('ai-chat')}
+                className={`${
+                  activeTab === 'ai-chat'
+                    ? 'bg-indigo-50 border-indigo-500 text-indigo-700'
+                    : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-900'
+                } group flex items-center px-3 py-2 text-sm font-medium border-r-2 w-full text-left`}
+              >
+                <svg className="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                AI Chat
+              </button>
+              
+              <button
                 onClick={() => handleTabClick('text-generation')}
                 className={`${
                   activeTab === 'text-generation'

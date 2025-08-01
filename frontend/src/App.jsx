@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import TextGeneration from './pages/TextGeneration';
 import ImageGeneration from './pages/ImageGeneration';
 import VideoGeneration from './pages/VideoGeneration';
+import AIChat from './pages/AIChat';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -33,6 +34,12 @@ function App() {
             path="/dashboard" 
             element={
               isAuthenticated ? <Dashboard setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/login" />
+            } 
+          />
+          <Route 
+            path="/ai-chat" 
+            element={
+              isAuthenticated ? <AIChat /> : <Navigate to="/login" />
             } 
           />
           <Route 
